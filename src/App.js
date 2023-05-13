@@ -311,13 +311,20 @@ function App() {
   ]
   const [division, setDiviosion] = useState([]);
   const [distric, setDistric] = useState([]);
+  const [union, setUnion] = useState([]);
+  const [villege, setVillege] = useState([]);
 
   const handleDivision = (id) => {
     const matchedDistrics = districs.filter(e => e.divisonId === id);
     setDistric(matchedDistrics);
   }
   const handleDistrics = (id) => {
-
+    const matchedUnions = unions.filter(e => e.districtId === id);
+    setUnion(matchedUnions);
+  }
+  const handleUnions = (id) => {
+    const matchedVilleges = villeges.filter(e => e.unionId === id);
+    setVillege(matchedVilleges);
   }
 
   useEffect(() => {
@@ -327,39 +334,74 @@ function App() {
   return (
     <div className="App">
 
-      <section class="division-section">
-        <select name="" id="" onChange={(e) => handleDivision(e.target.value)}>
-          <option value="0">Select a Division</option>
+      <section class="content">
+        <section class="content-division-section">
+          <select name="" id="" onChange={(e) => handleDivision(e.target.value)}>
+            <option value="0">Select a Division</option>
 
-          {
-            division &&
-              division !== undefined ?
-              division.map((div, index) => {
-                return (
-                  <option key={index} value={div.id}>{div.name}</option>
-                )
-              })
+            {
+              division &&
+                division !== undefined ?
+                division.map((div, index) => {
+                  return (
+                    <option key={index} value={div.id}>{div.name}</option>
+                  )
+                })
 
-              : "No Division Selected"
-          }
-        </select>
-      </section>
-      <section class="district-section" >
-        <select name="" id="" onChange={(e) => handleDistrics(e.target.value)}>
-          <option value="0">Select a Distric</option>
+                : "No Division Selected"
+            }
+          </select>
+        </section>
+        <section class="content-district-section" >
+          <select name="" id="" onChange={(e) => handleDistrics(e.target.value)}>
+            <option value="0">Select a Distric</option>
 
-          {
-            distric &&
-              distric !== undefined ?
-              distric.map((div, index) => {
-                return (
-                  <option key={index} value={div.id}>{div.name}</option>
-                )
-              })
+            {
+              distric &&
+                distric !== undefined ?
+                distric.map((div, index) => {
+                  return (
+                    <option key={index} value={div.id}>{div.name}</option>
+                  )
+                })
 
-              : "No Division Selected"
-          }
-        </select>
+                : "No Division Selected"
+            }
+          </select>
+        </section>
+        <section class="content-union-section" >
+          <select name="" id="" onChange={(e) => handleUnions(e.target.value)}>
+            <option value="0">Select a Distric</option>
+
+            {
+              union &&
+                union !== undefined ?
+                union.map((div, index) => {
+                  return (
+                    <option key={index} value={div.id}>{div.name}</option>
+                  )
+                })
+
+                : "No Division Selected"
+            }
+          </select>
+        </section>
+        <section class="content-Villege-section" >
+          <select name="" id="" >
+            <option value="0">Select a Distric</option>
+            {
+              villege &&
+                villege !== undefined ?
+                villege.map((div, index) => {
+                  return (
+                    <option key={index} value={div.id}>{div.name}</option>
+                  )
+                })
+
+                : "No Division Selected"
+            }
+          </select>
+        </section>
       </section>
     </div >
   );
